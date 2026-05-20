@@ -7,6 +7,7 @@
 <meta name="description" content="CrestBridge Partners is a strategic healthcare consulting firm helping Korean and global medical-device companies commercialize in the U.S. market."/>
 <link rel="stylesheet" href="tokens.css">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
 <style>
   /* ============================================================
      CrestBridge brand override
@@ -482,8 +483,114 @@
   .footer__legal { display: flex; gap: 18px; }
 
   /* ---------- Responsive ---------- */
+  /* ---------- Lead magnet (Kit form) ---------- */
+  .lead-magnet {
+    padding: 96px 96px 128px; max-width: 1440px; margin: 0 auto;
+    border-top: 1px solid var(--rule);
+  }
+  .lead-magnet__inner { max-width: 720px; }
+  .lead-magnet__h2 {
+    font-family: var(--font-serif); font-size: 44px; font-weight: 300;
+    line-height: 1.1; letter-spacing: -0.02em; margin: 18px 0 16px;
+  }
+  .lead-magnet__sub {
+    font-family: var(--font-serif); font-size: 20px; font-weight: 300;
+    line-height: 1.5; color: var(--fg-2); max-width: 600px; margin: 0 0 36px;
+  }
+
+  /* Override ConvertKit / Kit form chrome to match the brand */
+  .formkit-form[data-uid="4f54c2320e"] {
+    box-shadow: none !important;
+    max-width: 100% !important; min-width: 0 !important;
+    background: transparent !important; border-radius: 0 !important;
+    overflow: visible !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-background { display: none !important; }
+  .formkit-form[data-uid="4f54c2320e"] [data-style="full"] {
+    display: block !important; grid-template-columns: none !important; width: 100% !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-column { padding: 0 !important; }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-header { display: none !important; }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-fields {
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: stretch;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-field {
+    flex: 1 1 280px; margin: 0 !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-input {
+    font-family: var(--font-sans) !important;
+    font-size: 15px !important;
+    padding: 14px 16px !important;
+    border: 1px solid var(--slate-300) !important;
+    border-radius: 2px !important;
+    color: var(--fg-1) !important;
+    background: #fff !important;
+    width: 100% !important;
+    line-height: 1.2 !important;
+    transition: border-color 200ms var(--ease), box-shadow 200ms var(--ease) !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-input:focus {
+    border-color: var(--brass-500) !important;
+    box-shadow: var(--shadow-focus) !important;
+    outline: none !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-input::placeholder {
+    color: var(--fg-4) !important; opacity: 1 !important; font-weight: 400 !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-submit {
+    background: var(--ink-900) !important;
+    color: var(--paper) !important;
+    border-radius: 2px !important;
+    font-family: var(--font-sans) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+    width: auto !important;
+    min-width: 220px;
+    flex: 0 0 auto;
+    transition: background-color 200ms var(--ease) !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-submit:hover {
+    background: var(--ink-700) !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-submit > span {
+    padding: 14px 28px !important; transition: none !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-submit:hover > span,
+  .formkit-form[data-uid="4f54c2320e"] .formkit-submit:focus > span {
+    background-color: transparent !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-disclaimer {
+    font-family: var(--font-sans) !important;
+    font-size: 12px !important;
+    color: var(--fg-3) !important;
+    margin: 18px 0 0 !important;
+    padding: 0 !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-alert {
+    font-family: var(--font-sans) !important;
+    border-radius: 2px !important;
+    margin: 12px 0 0 !important;
+    text-align: left !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-alert-error {
+    background: var(--danger-bg) !important;
+    border-color: var(--danger) !important;
+    color: var(--danger) !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-alert-success {
+    background: var(--success-bg) !important;
+    border-color: var(--success) !important;
+    color: var(--success) !important;
+  }
+  .formkit-form[data-uid="4f54c2320e"] .formkit-powered-by-convertkit-container {
+    margin-top: 24px !important; opacity: 0.45;
+  }
+
   @media (max-width: 1100px) {
     .section, .approach, .services, .insights, .marquee, .footer { padding-left: 48px; padding-right: 48px; }
+    .lead-magnet { padding-left: 48px; padding-right: 48px; }
+    .lead-magnet__h2 { font-size: 36px; }
     .nav__inner, .hero, .case, .stats, .team, .cta, .section--ink { padding-left: 48px; padding-right: 48px; }
     .hero__grid { grid-template-columns: 1fr; gap: 48px; }
     .hero__h1 { font-size: 64px; }
@@ -847,6 +954,58 @@
       <span class="row__author">Hannah Lee</span>
       <span class="row__read">4 min read</span>
     </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LEAD MAGNET (Kit form)
+     ============================================================ -->
+<section class="lead-magnet" id="guide">
+  <div class="lead-magnet__inner">
+    <span class="ek">Field Guide</span>
+    <h2 class="lead-magnet__h2">The U.S. medtech launch playbook.</h2>
+    <p class="lead-magnet__sub">
+      A concise field guide for Korean medtech founders entering the U.S. — coverage strategy, KOL sequencing, and the first hundred implants. Sent to your inbox.
+    </p>
+
+    <form
+      action="https://app.kit.com/forms/9466151/subscriptions"
+      class="seva-form formkit-form"
+      method="post"
+      data-sv-form="9466151"
+      data-uid="4f54c2320e"
+      data-format="inline"
+      data-version="5"
+      data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"Success! Now check your email to confirm your subscription.","redirect_url":""},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":true,"url":"https://kit.com/features/forms?utm_campaign=poweredby&utm_content=form&utm_medium=referral&utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
+    >
+      <div data-style="full">
+        <div data-element="column" class="formkit-column">
+          <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+          <div data-element="fields" class="seva-fields formkit-fields">
+            <div class="formkit-field">
+              <input class="formkit-input" name="email_address" aria-label="Work email" placeholder="Work email" required type="email" />
+            </div>
+            <button data-element="submit" class="formkit-submit formkit-submit">
+              <div class="formkit-spinner"><div></div><div></div><div></div></div>
+              <span>Send Me the Playbook</span>
+            </button>
+          </div>
+          <div class="formkit-disclaimer" data-element="disclaimer">
+            We respect your privacy. Unsubscribe anytime.
+          </div>
+          <div class="formkit-powered-by-convertkit-container">
+            <a
+              href="https://kit.com/features/forms?utm_campaign=poweredby&utm_content=form&utm_medium=referral&utm_source=dynamic"
+              data-element="powered-by"
+              class="formkit-powered-by-convertkit"
+              data-variant="dark"
+              target="_blank"
+              rel="nofollow noopener"
+            >Built with Kit</a>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
 </section>
 
