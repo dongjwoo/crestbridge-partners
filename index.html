@@ -1,0 +1,1105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>CrestBridge Partners — Korean medtech into U.S. care</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="CrestBridge Partners is a strategic healthcare consulting firm helping Korean and global medical-device companies commercialize in the U.S. market."/>
+<link rel="stylesheet" href="tokens.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  /* ============================================================
+     CrestBridge brand override
+     Swap brass accent for a Goldman/McKinsey-style signal blue.
+     The design-system tokens stay canonical in tokens.css; we
+     remap the accent ramp here so every existing reference picks
+     up the new color automatically.
+     ============================================================ */
+  :root {
+    --brass-700: #143E8C;  /* deep — labels on light surfaces */
+    --brass-600: #1956C2;  /* mid  — em on paper */
+    --brass-500: #1F6FEB;  /* primary accent — hairlines, hover underlines */
+    --brass-400: #4A8FF0;  /* on ink — italics on dark surfaces */
+    --brass-200: #C7DBFB;
+    --accent:      #1F6FEB;
+    --accent-deep: #143E8C;
+    --link-hover-underline: #1F6FEB;
+    --shadow-focus: 0 0 0 3px rgba(31,111,235,0.30);
+  }
+
+  html, body { background: var(--paper); margin: 0; }
+  *, *::before, *::after { box-sizing: border-box; }
+  .lucide { width: 18px; height: 18px; stroke-width: 1.5; }
+
+  /* ---------- Section primitives ---------- */
+  .section { padding: 96px 96px; max-width: 1440px; margin: 0 auto; }
+  .section--tight { padding: 64px 96px; }
+  .section--ink { background: var(--ink-900); color: var(--paper); max-width: none; margin: 0; padding: 120px 96px; }
+  .section--ink .eyebrow,
+  .section--ink .ek { color: var(--brass-400); }
+
+  .ek {
+    font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-3);
+    display: inline-flex; align-items: center; gap: 14px;
+  }
+  .ek::before { content:""; width: 32px; height: 1px; background: var(--brass-500); }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    font-family: var(--font-sans); font-size: 14px; font-weight: 500;
+    padding: 12px 22px; border-radius: 2px; border: 1px solid transparent;
+    cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+    line-height: 1; transition: all 200ms var(--ease); text-decoration: none;
+  }
+  .btn--primary { background: var(--ink-900); color: var(--paper); }
+  .btn--primary:hover { background: var(--ink-700); }
+  .btn--primary:active { background: var(--ink-950); transform: translateY(1px); }
+  .btn--secondary { background: transparent; color: var(--ink-900); border-color: var(--ink-900); }
+  .btn--secondary:hover { background: rgba(11,26,46,0.06); }
+  .btn--paper { background: var(--paper); color: var(--ink-900); }
+  .btn--paper:hover { background: #fff; }
+  .btn--ghost-light { background: transparent; color: var(--paper); border-color: var(--paper); }
+  .btn--ghost-light:hover { background: rgba(255,255,255,0.08); }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--paper);
+    border-bottom: 1px solid transparent;
+    transition: all 200ms var(--ease);
+  }
+  .nav.is-scrolled {
+    background: rgba(250,247,242,0.82);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: var(--rule);
+  }
+  .nav__inner {
+    height: var(--nav-h); max-width: 1440px; margin: 0 auto;
+    padding: 0 96px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav__left { display: flex; align-items: center; gap: 44px; }
+  .brand { display: flex; align-items: center; gap: 12px; color: var(--ink-900); }
+  .brand__name {
+    font-family: var(--font-serif); font-size: 19px; font-weight: 500; letter-spacing: -0.01em;
+  }
+  .nav__links { display: flex; gap: 28px; }
+  .nav__link {
+    font-family: var(--font-sans); font-size: 13.5px; font-weight: 500; color: var(--ink-900);
+    padding-bottom: 2px; border-bottom: 1px solid transparent;
+    transition: border-color 200ms var(--ease); cursor: pointer;
+  }
+  .nav__link:hover { border-bottom-color: var(--brass-500); }
+  .nav__link.is-active { border-bottom-color: var(--ink-900); }
+  .nav__link.is-active:hover { border-bottom-color: var(--brass-500); }
+  .nav__right { display: flex; gap: 18px; align-items: center; }
+  .lang {
+    display: inline-flex; gap: 8px; font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.08em; color: var(--fg-3);
+  }
+  .lang span { cursor: pointer; }
+  .lang .is-on { color: var(--ink-900); font-weight: 600; }
+  .lang .sep { color: var(--slate-300); cursor: default; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: var(--ink-900); color: var(--paper);
+    position: relative; overflow: hidden;
+    padding: 120px 96px 132px;
+  }
+  .hero__inner { max-width: 1248px; margin: 0 auto; position: relative; z-index: 2; }
+  .hero__kicker {
+    font-family: var(--font-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--brass-400);
+    display: inline-flex; align-items: center; gap: 12px; margin-bottom: 28px;
+  }
+  .hero__kicker::before { content:""; width: 24px; height: 1px; background: var(--brass-500); }
+  .hero__grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 96px; align-items: end; }
+  .hero__h1 {
+    font-family: var(--font-serif); font-size: 84px; font-weight: 300;
+    letter-spacing: -0.025em; line-height: 1.02; margin: 0; color: var(--paper);
+  }
+  .hero__h1 em { font-style: italic; color: var(--brass-400); }
+  .hero__sub {
+    font-family: var(--font-serif); font-size: 22px; font-weight: 300; line-height: 1.5;
+    color: rgba(250,247,242,0.78); max-width: 440px; margin: 0;
+  }
+  .hero__cta { display: flex; gap: 14px; margin-top: 56px; flex-wrap: wrap; }
+  .hero__meta {
+    display: flex; align-items: center; gap: 14px; margin-top: 32px;
+    font-family: var(--font-mono); font-size: 12px;
+    color: rgba(250,247,242,0.55); letter-spacing: 0.04em;
+  }
+  .hero__meta .dot { opacity: 0.4; }
+  .hero__watermark {
+    position: absolute; right: -120px; bottom: -220px;
+    opacity: 0.10; color: var(--paper); z-index: 1;
+  }
+  .hero__shade {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.04), transparent 60%);
+  }
+
+  /* ---------- Marquee ---------- */
+  .marquee {
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    padding: 32px 96px; max-width: 1440px; margin: 0 auto;
+  }
+  .marquee__inner { display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+  .marquee__label {
+    font-family: var(--font-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--fg-3);
+    flex: 0 0 auto; max-width: 180px; line-height: 1.5;
+  }
+  .marquee__logos { display: flex; gap: 56px; align-items: center; opacity: 0.62; }
+  .marquee__logo {
+    font-family: var(--font-serif); font-size: 19px; font-weight: 500; letter-spacing: -0.005em;
+    color: var(--ink-800); white-space: nowrap;
+  }
+
+  /* ---------- Approach ---------- */
+  .approach { padding: 128px 96px; max-width: 1440px; margin: 0 auto; }
+  .approach__grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 96px; align-items: start; }
+  .approach__h2 {
+    font-family: var(--font-serif); font-size: 56px; font-weight: 300; line-height: 1.05;
+    letter-spacing: -0.022em; color: var(--ink-900); margin: 20px 0 0;
+  }
+  .approach__lead {
+    font-family: var(--font-serif); font-size: 26px; font-weight: 300; line-height: 1.42;
+    color: var(--fg-2); margin: 0; max-width: 640px;
+  }
+  .approach__lead em { font-style: italic; color: var(--brass-600); font-family: var(--font-serif); }
+  .approach__body {
+    font-family: var(--font-sans); font-size: 17px; line-height: 1.6;
+    color: var(--fg-2); margin: 28px 0 0; max-width: 560px;
+  }
+
+  /* ---------- Services ---------- */
+  .services { padding: 32px 96px 128px; max-width: 1440px; margin: 0 auto; }
+  .services__head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 64px; gap: 64px;
+  }
+  .services__h2 {
+    font-family: var(--font-serif); font-size: 44px; font-weight: 300; line-height: 1.1;
+    letter-spacing: -0.02em; margin: 20px 0 0; max-width: 560px;
+  }
+  .more-link {
+    font-family: var(--font-sans); font-size: 14px; font-weight: 500; color: var(--ink-900);
+    border-bottom: 1px solid var(--ink-900); padding-bottom: 2px; align-self: flex-end; cursor: pointer;
+  }
+  .services__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+  .svc {
+    position: relative; padding-top: 22px; border-top: 1px solid var(--rule);
+    transition: border-color 200ms var(--ease); cursor: pointer;
+    display: flex; flex-direction: column; gap: 12px; min-height: 280px;
+  }
+  .svc__accent {
+    position: absolute; left: 0; top: -1px; height: 2px; width: 0;
+    background: var(--brass-500); transition: width 200ms var(--ease);
+  }
+  .svc:hover { border-top-color: var(--ink-900); }
+  .svc:hover .svc__accent { width: 48px; }
+  .svc:hover .svc__more { color: var(--brass-600); }
+  .svc__num { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); letter-spacing: 0.08em; }
+  .svc__icon { color: var(--ink-900); }
+  .svc__icon .lucide { width: 22px; height: 22px; stroke-width: 1.5; }
+  .svc__head {
+    font-family: var(--font-serif); font-size: 22px; font-weight: 500; line-height: 1.2;
+    letter-spacing: -0.01em; color: var(--ink-900); margin: 0;
+  }
+  .svc__desc {
+    font-family: var(--font-sans); font-size: 14px; line-height: 1.55;
+    color: var(--fg-2); margin: 0;
+  }
+  .svc__more {
+    margin-top: auto; font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+    color: var(--ink-900); display: inline-flex; align-items: center; gap: 6px;
+    transition: color 200ms var(--ease);
+  }
+
+  /* ---------- Stats ---------- */
+  .stats {
+    background: var(--paper-2); padding: 96px 96px;
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  }
+  .stats__inner { max-width: 1248px; margin: 0 auto; }
+  .stats__h2 {
+    font-family: var(--font-serif); font-size: 36px; font-weight: 300;
+    letter-spacing: -0.02em; line-height: 1.15; margin: 14px 0 56px; max-width: 540px;
+  }
+  .stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+  .stat { border-top: 1px solid var(--ink-900); padding-top: 18px; display: flex; flex-direction: column; gap: 6px; }
+  .stat__num {
+    font-family: var(--font-serif); font-size: 72px; font-weight: 300; line-height: 1;
+    letter-spacing: -0.025em; color: var(--ink-900);
+  }
+  .stat__num .unit { font-size: 28px; color: var(--brass-600); margin-left: 2px; letter-spacing: 0; }
+  .stat__lbl {
+    font-family: var(--font-sans); font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--fg-1); margin-top: 8px;
+  }
+  .stat__sub { font-family: var(--font-sans); font-size: 13px; color: var(--fg-3); line-height: 1.5; }
+
+  /* ---------- Case study ---------- */
+  .case {
+    background: var(--ink-900); color: var(--paper);
+    padding: 128px 96px; position: relative; overflow: hidden;
+  }
+  .case__inner {
+    max-width: 1248px; margin: 0 auto; display: grid;
+    grid-template-columns: 1fr 1.05fr; gap: 96px; align-items: center;
+    position: relative; z-index: 2;
+  }
+  .case__h2 {
+    font-family: var(--font-serif); font-size: 48px; font-weight: 300; line-height: 1.08;
+    letter-spacing: -0.022em; color: var(--paper); margin: 18px 0 0;
+  }
+  .case__h2 em { font-style: italic; color: var(--brass-400); }
+  .case__sub {
+    font-family: var(--font-sans); font-size: 17px; line-height: 1.6;
+    color: rgba(250,247,242,0.72); margin: 24px 0 0; max-width: 540px;
+  }
+  .case__facts {
+    display: flex; gap: 48px; margin-top: 40px; padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.14);
+  }
+  .case__fact { display: flex; flex-direction: column; gap: 4px; }
+  .case__fnum {
+    font-family: var(--font-serif); font-size: 38px; font-weight: 300;
+    color: var(--paper); line-height: 1; letter-spacing: -0.02em;
+  }
+  .case__fnum .acc { font-size: 22px; color: var(--brass-400); }
+  .case__flbl { font-family: var(--font-sans); font-size: 12px; color: rgba(250,247,242,0.6); letter-spacing: 0.04em; }
+  .case__cta {
+    margin-top: 40px; display: inline-flex; align-items: center; gap: 10px;
+    color: var(--paper); border-bottom: 1px solid var(--brass-500); padding-bottom: 4px;
+    font-family: var(--font-sans); font-weight: 500; font-size: 14px; cursor: pointer;
+  }
+  .case__photo {
+    aspect-ratio: 4/5; background: linear-gradient(180deg, #1B3556 0%, #0B1A2E 100%);
+    border: 1px solid rgba(255,255,255,0.10); position: relative; overflow: hidden;
+  }
+  .case__photo-meta {
+    position: absolute; bottom: 18px; left: 22px; right: 22px;
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono); font-size: 11px;
+    color: rgba(250,247,242,0.55); letter-spacing: 0.06em;
+  }
+
+  /* ---------- Insights ---------- */
+  .insights { padding: 128px 96px; max-width: 1440px; margin: 0 auto; }
+  .insights__head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 56px; gap: 64px;
+  }
+  .insights__h2 {
+    font-family: var(--font-serif); font-size: 44px; font-weight: 300; line-height: 1.1;
+    letter-spacing: -0.02em; margin: 20px 0 0;
+  }
+  .chips { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+  .chip {
+    font-family: var(--font-sans); font-size: 12.5px; padding: 7px 16px; border-radius: 999px;
+    border: 1px solid var(--slate-300); background: #fff; color: var(--fg-2); cursor: pointer;
+    transition: all 200ms var(--ease);
+  }
+  .chip:hover { border-color: var(--ink-900); }
+  .chip.is-on { background: var(--ink-900); color: var(--paper); border-color: var(--ink-900); }
+  .row {
+    display: grid; grid-template-columns: 120px 160px 1fr 140px 80px;
+    align-items: center; gap: 24px; padding: 24px 0;
+    border-top: 1px solid var(--rule);
+    cursor: pointer; transition: background 200ms var(--ease);
+  }
+  .row:hover { background: rgba(11,26,46,0.02); }
+  .row__date { font-family: var(--font-mono); font-size: 12px; color: var(--fg-3); letter-spacing: 0.04em; }
+  .row__cat {
+    font-family: var(--font-sans); font-size: 12px; color: var(--brass-700);
+    font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .row__cat::before {
+    content: ""; display: inline-block; width: 6px; height: 6px;
+    background: var(--brass-500); border-radius: 999px; margin-right: 8px; vertical-align: middle;
+  }
+  .row__title {
+    font-family: var(--font-serif); font-size: 22px; font-weight: 400; line-height: 1.3;
+    color: var(--ink-900); letter-spacing: -0.01em;
+  }
+  .row__author { font-family: var(--font-sans); font-size: 13px; color: var(--fg-3); }
+  .row__read { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); text-align: right; }
+
+  /* ---------- Team ---------- */
+  .team {
+    background: var(--paper-2); padding: 128px 96px;
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  }
+  .team__inner { max-width: 1248px; margin: 0 auto; }
+  .team__head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 64px; gap: 64px;
+  }
+  .team__h2 {
+    font-family: var(--font-serif); font-size: 44px; font-weight: 300; line-height: 1.1;
+    letter-spacing: -0.02em; margin: 20px 0 0; max-width: 640px;
+  }
+  .team__sub {
+    font-family: var(--font-sans); font-size: 14px; color: var(--fg-3);
+    max-width: 360px; line-height: 1.55;
+  }
+  .team__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .partner { display: flex; flex-direction: column; gap: 16px; cursor: pointer; }
+  .partner__photo {
+    aspect-ratio: 4/5; background: var(--ink-900); position: relative;
+    transition: background 200ms var(--ease); overflow: hidden;
+  }
+  .partner:hover .partner__photo { background: var(--ink-800); }
+  .partner__initials {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-serif); font-size: 96px; font-weight: 300;
+    color: rgba(250,247,242,0.18); letter-spacing: -0.02em;
+    transition: color 200ms var(--ease);
+  }
+  .partner:hover .partner__initials { color: var(--brass-400); }
+  .partner__loc {
+    position: absolute; bottom: 14px; left: 16px;
+    font-family: var(--font-mono); font-size: 10.5px;
+    color: rgba(250,247,242,0.5); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .partner__name {
+    font-family: var(--font-serif); font-size: 22px; font-weight: 500;
+    color: var(--ink-900); letter-spacing: -0.01em;
+  }
+  .partner__role {
+    font-family: var(--font-sans); font-size: 13px; color: var(--brass-700);
+    font-weight: 500; letter-spacing: 0.02em; margin-top: 2px;
+  }
+  .partner__bio {
+    font-family: var(--font-sans); font-size: 13.5px; color: var(--fg-2);
+    line-height: 1.5; margin-top: 10px;
+  }
+
+  /* ---------- Contact CTA ---------- */
+  .cta {
+    background: var(--ink-900); color: var(--paper);
+    padding: 160px 96px; position: relative; overflow: hidden;
+  }
+  .cta__inner { max-width: 1100px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+  .cta__eb {
+    font-family: var(--font-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--brass-400);
+    display: inline-flex; align-items: center; gap: 14px; margin-bottom: 24px;
+  }
+  .cta__eb::before { content: ""; width: 32px; height: 1px; background: var(--brass-500); }
+  .cta__h2 {
+    font-family: var(--font-serif); font-size: 64px; font-weight: 300; line-height: 1.04;
+    letter-spacing: -0.022em; margin: 0; color: var(--paper);
+  }
+  .cta__sub {
+    font-family: var(--font-serif); font-size: 22px; font-weight: 300; line-height: 1.45;
+    color: rgba(250,247,242,0.72); margin: 24px auto 0; max-width: 620px;
+  }
+  .cta__row { display: flex; gap: 18px; justify-content: center; margin-top: 48px; flex-wrap: wrap; }
+  .cta__watermark {
+    position: absolute; left: 50%; top: 62%;
+    transform: translate(-50%, -10%); opacity: 0.06; color: var(--paper); z-index: 1;
+  }
+
+  /* ---------- Modal ---------- */
+  .scrim {
+    position: fixed; inset: 0; background: rgba(11,26,46,0.48); z-index: 100;
+    display: flex; align-items: center; justify-content: center; padding: 40px;
+  }
+  .scrim[hidden] { display: none; }
+  .modal {
+    background: var(--paper); color: var(--fg-1); width: 560px; max-width: 100%;
+    padding: 48px; border-radius: 4px; position: relative; box-shadow: var(--shadow-lg);
+  }
+  .modal__close {
+    position: absolute; top: 16px; right: 16px; width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--fg-3); background: none; border: 0;
+  }
+  .modal__kicker {
+    font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--brass-700);
+  }
+  .modal__h3 {
+    font-family: var(--font-serif); font-size: 32px; font-weight: 400;
+    letter-spacing: -0.015em; margin: 10px 0 28px;
+  }
+  .modal__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { margin-top: 16px; }
+  .field:first-child { margin-top: 0; }
+  .field label {
+    font-family: var(--font-sans); font-size: 12px; font-weight: 500;
+    color: var(--fg-2); margin-bottom: 6px; display: block;
+  }
+  .field input, .field select, .field textarea {
+    font-family: var(--font-sans); font-size: 14px; padding: 10px 12px;
+    border: 1px solid var(--slate-300); border-radius: 4px; width: 100%;
+    background: #fff; outline: none; color: var(--fg-1);
+    transition: border-color 200ms var(--ease), box-shadow 200ms var(--ease);
+  }
+  .field textarea { min-height: 96px; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    border-color: var(--brass-500); box-shadow: var(--shadow-focus);
+  }
+
+  /* ---------- Footer ---------- */
+  .footer { background: var(--ink-950); color: var(--paper); padding: 80px 96px 40px; }
+  .footer__inner { max-width: 1248px; margin: 0 auto; }
+  .footer__top {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 64px;
+    padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.10);
+  }
+  .footer__col-title {
+    font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--brass-400); margin-bottom: 18px;
+  }
+  .footer__col-item {
+    font-family: var(--font-sans); font-size: 14px;
+    color: rgba(250,247,242,0.72); display: block; margin-bottom: 10px;
+    cursor: pointer; transition: color 200ms var(--ease);
+  }
+  .footer__col-item:hover { color: var(--paper); }
+  .footer__brand { display: flex; align-items: center; gap: 12px; color: var(--paper); }
+  .footer__brand-name {
+    font-family: var(--font-serif); font-size: 24px; font-weight: 500; letter-spacing: -0.01em;
+  }
+  .footer__tag {
+    font-family: var(--font-serif); font-size: 17px; font-weight: 300;
+    color: rgba(250,247,242,0.6); line-height: 1.5; margin-top: 20px; max-width: 320px;
+  }
+  .footer__bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 36px; font-family: var(--font-mono); font-size: 11.5px;
+    color: rgba(250,247,242,0.45); letter-spacing: 0.04em;
+  }
+  .footer__offices { display: flex; gap: 28px; }
+  .footer__legal { display: flex; gap: 18px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1100px) {
+    .section, .approach, .services, .insights, .marquee, .footer { padding-left: 48px; padding-right: 48px; }
+    .nav__inner, .hero, .case, .stats, .team, .cta, .section--ink { padding-left: 48px; padding-right: 48px; }
+    .hero__grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero__h1 { font-size: 64px; }
+    .approach__grid { grid-template-columns: 1fr; gap: 32px; }
+    .approach__h2 { font-size: 42px; }
+    .services__grid { grid-template-columns: repeat(2, 1fr); }
+    .stats__grid { grid-template-columns: repeat(2, 1fr); }
+    .case__inner { grid-template-columns: 1fr; gap: 48px; }
+    .case__h2, .cta__h2 { font-size: 40px; }
+    .team__grid { grid-template-columns: repeat(2, 1fr); }
+    .row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+    .row__read { text-align: left; }
+    .nav__links { display: none; }
+    .footer__top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .footer__bottom { flex-direction: column; gap: 14px; align-items: flex-start; }
+  }
+  @media (max-width: 640px) {
+    .section, .approach, .services, .insights, .marquee, .footer,
+    .nav__inner, .hero, .case, .stats, .team, .cta, .section--ink {
+      padding-left: 24px; padding-right: 24px;
+    }
+    .hero__h1 { font-size: 48px; }
+    .approach__h2, .services__h2, .insights__h2, .team__h2 { font-size: 32px; }
+    .cta__h2 { font-size: 36px; }
+    .stat__num { font-size: 56px; }
+    .services__grid, .stats__grid, .team__grid, .footer__top { grid-template-columns: 1fr; }
+    .marquee__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .marquee__logos { flex-wrap: wrap; gap: 24px; }
+    .modal { padding: 32px 24px; }
+    .modal__row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <div class="nav__left">
+      <a class="brand" href="#top" aria-label="CrestBridge Partners">
+        <!-- Bridge mark: arched span with two pylons -->
+        <svg width="28" height="28" viewBox="0 0 120 120" aria-hidden="true">
+          <path d="M14 96 Q60 14 106 96" stroke="currentColor" stroke-width="3" stroke-linecap="square" fill="none"/>
+          <path d="M34 96 Q60 46 86 96" stroke="currentColor" stroke-width="3" stroke-linecap="square" fill="none"/>
+          <line x1="10" y1="96" x2="110" y2="96" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+          <circle cx="60" cy="96" r="3" fill="currentColor"/>
+        </svg>
+        <span class="brand__name">CrestBridge <span style="color:var(--brass-600); font-weight:400; font-style:italic;">Partners</span></span>
+      </a>
+      <div class="nav__links">
+        <a class="nav__link is-active" href="#approach">Approach</a>
+        <a class="nav__link" href="#services">Services</a>
+        <a class="nav__link" href="#insights">Insights</a>
+        <a class="nav__link" href="#team">Team</a>
+        <a class="nav__link" href="#case">Cases</a>
+      </div>
+    </div>
+    <div class="nav__right">
+      <div class="lang" id="lang">
+        <span data-lang="EN" class="is-on">EN</span>
+        <span class="sep">·</span>
+        <span data-lang="KO">한</span>
+      </div>
+      <button class="btn btn--primary" data-open-contact>
+        Talk to Our Team
+        <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__kicker">CrestBridge Partners</div>
+    <div class="hero__grid">
+      <div>
+        <h1 class="hero__h1">
+          Korean medtech<br/>
+          into <em>U.S. care.</em>
+        </h1>
+        <div class="hero__cta">
+          <button class="btn btn--paper" data-open-contact>
+            Talk to Our Team
+            <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+          </button>
+          <a class="btn btn--ghost-light" href="#approach">Read Our Approach</a>
+        </div>
+        <div class="hero__meta">
+          <span>EST. 2018</span>
+          <span class="dot">·</span>
+          <span>SEOUL · BOSTON · MINNEAPOLIS</span>
+        </div>
+      </div>
+      <div style="padding-bottom:8px">
+        <p class="hero__sub">
+          We help innovative medical-device companies bridge the gap between product
+          innovation and commercial success — from coverage strategy through the first
+          hundred implants.
+        </p>
+      </div>
+    </div>
+  </div>
+  <svg class="hero__watermark" width="640" height="640" viewBox="0 0 120 120" aria-hidden="true">
+    <path d="M14 96 Q60 14 106 96" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M34 96 Q60 46 86 96" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <line x1="10" y1="96" x2="110" y2="96" stroke="currentColor" stroke-width="1.5"/>
+  </svg>
+  <div class="hero__shade"></div>
+</section>
+
+<!-- ============================================================
+     MARQUEE
+     ============================================================ -->
+<div class="marquee">
+  <div class="marquee__inner">
+    <div class="marquee__label">Trusted by Korean medical-device innovators</div>
+    <div class="marquee__logos">
+      <span class="marquee__logo">SEHAN MEDICAL</span>
+      <span class="marquee__logo">INTHESMART</span>
+      <span class="marquee__logo">L.MEDI</span>
+      <span class="marquee__logo">GENOSS</span>
+      <span class="marquee__logo">NEXEL Bio</span>
+      <span class="marquee__logo">HUVITZ</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     APPROACH
+     ============================================================ -->
+<section class="approach" id="approach">
+  <div class="approach__grid">
+    <div>
+      <span class="ek">Our Approach</span>
+      <h2 class="approach__h2">Three questions decide a U.S. launch.</h2>
+    </div>
+    <div>
+      <p class="approach__lead">
+        <em>Who pays. Who specifies. Who implants.</em><br/>
+        We answer them in that order — and we don't move past one until the next is in clear focus.
+      </p>
+      <p class="approach__body">
+        U.S. commercialization is won at the cath lab and in the payer review, not at the trade show.
+        CrestBridge brings the operational discipline of a global medtech commercial team to founders
+        who haven't built one yet.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section class="services" id="services">
+  <div class="services__head">
+    <div>
+      <span class="ek">What We Do</span>
+      <h2 class="services__h2">Five disciplines, one launch sequence.</h2>
+    </div>
+    <span class="more-link">All Services →</span>
+  </div>
+  <div class="services__grid">
+    <article class="svc">
+      <span class="svc__accent"></span>
+      <span class="svc__num">01</span>
+      <span class="svc__icon"><i data-lucide="compass"></i></span>
+      <h3 class="svc__head">Market Assessment</h3>
+      <p class="svc__desc">Sizing, segmentation, and the white-space map for U.S. entry. Procedure volume, payer mix, reference accounts.</p>
+      <span class="svc__more">Learn more <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+    </article>
+    <article class="svc">
+      <span class="svc__accent"></span>
+      <span class="svc__num">02</span>
+      <span class="svc__icon"><i data-lucide="file-text"></i></span>
+      <h3 class="svc__head">Coverage &amp; Reimbursement</h3>
+      <p class="svc__desc">CPT pathways, payer engagement, coding strategy, and a clean billing story for the first 100 cases.</p>
+      <span class="svc__more">Learn more <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+    </article>
+    <article class="svc">
+      <span class="svc__accent"></span>
+      <span class="svc__num">03</span>
+      <span class="svc__icon"><i data-lucide="users"></i></span>
+      <h3 class="svc__head">Physician Engagement</h3>
+      <p class="svc__desc">KOL maps, advisory boards, and the proctor network that gets your device into hands that matter.</p>
+      <span class="svc__more">Learn more <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+    </article>
+    <article class="svc">
+      <span class="svc__accent"></span>
+      <span class="svc__num">04</span>
+      <span class="svc__icon"><i data-lucide="building-2"></i></span>
+      <h3 class="svc__head">Commercial Build</h3>
+      <p class="svc__desc">Org design, sales-rep economics, training, and the first U.S. hires — interim leaders where it speeds you up.</p>
+      <span class="svc__more">Learn more <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+    </article>
+    <article class="svc">
+      <span class="svc__accent"></span>
+      <span class="svc__num">05</span>
+      <span class="svc__icon"><i data-lucide="rocket"></i></span>
+      <h3 class="svc__head">Launch Execution</h3>
+      <p class="svc__desc">Account selection, supply, training cadence, and the operating rhythm of the first six months on market.</p>
+      <span class="svc__more">Learn more <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS
+     ============================================================ -->
+<section class="stats">
+  <div class="stats__inner">
+    <span class="ek">By the Numbers</span>
+    <h2 class="stats__h2">Outcomes, not opinions.</h2>
+    <div class="stats__grid">
+      <div class="stat">
+        <div class="stat__num">12</div>
+        <div class="stat__lbl">U.S. Launches</div>
+        <div class="stat__sub">Cardiology, ortho, GI.</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">$1.4<span class="unit">B</span></div>
+        <div class="stat__lbl">Capital Advised</div>
+        <div class="stat__sub">Series A through public.</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">187</div>
+        <div class="stat__lbl">KOL Relationships</div>
+        <div class="stat__sub">Top-50 IDNs.</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">9<span class="unit">mo</span></div>
+        <div class="stat__lbl">Median Time to First Procedure</div>
+        <div class="stat__sub">Post 510(k) clearance.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CASE STUDY
+     ============================================================ -->
+<section class="case" id="case">
+  <div class="case__inner">
+    <div>
+      <span class="ek" style="color:var(--brass-400)">Case Study · Structural Heart</span>
+      <h2 class="case__h2">
+        From <em>FDA clearance</em><br/>
+        to <em>100 procedures</em><br/>
+        in nine months.
+      </h2>
+      <p class="case__sub">
+        A Korean structural-heart innovator engaged CrestBridge six months before 510(k).
+        We sequenced coverage, lined up three reference centers, and ran the operational
+        rhythm of weekly proctor scheduling through the first quarter on-market.
+      </p>
+      <div class="case__facts">
+        <div class="case__fact">
+          <div class="case__fnum">3</div>
+          <div class="case__flbl">Reference centers, Q1</div>
+        </div>
+        <div class="case__fact">
+          <div class="case__fnum">14<span class="acc">×</span></div>
+          <div class="case__flbl">Avg quarterly growth</div>
+        </div>
+        <div class="case__fact">
+          <div class="case__fnum">$42<span class="acc">M</span></div>
+          <div class="case__flbl">Series B raised</div>
+        </div>
+      </div>
+      <span class="case__cta">Read the Full Case <i data-lucide="arrow-right" style="width:16px;height:16px"></i></span>
+    </div>
+    <div class="case__photo">
+      <svg width="100%" height="100%" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="cs" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="rgba(185,138,78,0.45)"/>
+            <stop offset="1" stop-color="rgba(185,138,78,0)"/>
+          </linearGradient>
+        </defs>
+        <!-- broad-span bridge motif -->
+        <path d="M20 360 Q200 220 380 360" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" fill="none"/>
+        <path d="M80 330 Q200 230 320 330" stroke="rgba(255,255,255,0.24)" stroke-width="1.5" fill="none"/>
+        <line x1="80" y1="330" x2="80" y2="460" stroke="rgba(255,255,255,0.20)" stroke-width="1.5"/>
+        <line x1="320" y1="330" x2="320" y2="460" stroke="rgba(255,255,255,0.20)" stroke-width="1.5"/>
+        <line x1="0" y1="460" x2="400" y2="460" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+        <circle cx="200" cy="262" r="5" fill="rgba(185,138,78,0.9)"/>
+        <rect x="0" y="0" width="400" height="500" fill="url(#cs)" opacity="0.6"/>
+      </svg>
+      <div class="case__photo-meta">
+        <span>Boston · Q2 2024</span>
+        <span>K231042</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INSIGHTS
+     ============================================================ -->
+<section class="insights" id="insights">
+  <div class="insights__head">
+    <div>
+      <span class="ek">Insights</span>
+      <h2 class="insights__h2">Field notes from the launch sequence.</h2>
+    </div>
+    <span class="more-link">All Insights →</span>
+  </div>
+
+  <div class="chips" id="chips">
+    <span class="chip is-on" data-filter="all">All Insights</span>
+    <span class="chip" data-filter="access">Market Access</span>
+    <span class="chip" data-filter="kol">Physician Engagement</span>
+    <span class="chip" data-filter="gtm">Go-to-Market</span>
+    <span class="chip" data-filter="reg">Regulatory</span>
+  </div>
+
+  <div id="insights-list">
+    <div class="row" data-cat="access">
+      <span class="row__date">May 2026</span>
+      <span class="row__cat">Market Access</span>
+      <span class="row__title">The three coverage questions a Korean medtech founder must answer before the U.S. flight.</span>
+      <span class="row__author">Min-joon Park</span>
+      <span class="row__read">8 min read</span>
+    </div>
+    <div class="row" data-cat="kol">
+      <span class="row__date">Apr 2026</span>
+      <span class="row__cat">Physician Engagement</span>
+      <span class="row__title">Why your first proctor matters more than your first sales hire.</span>
+      <span class="row__author">Hannah Lee</span>
+      <span class="row__read">6 min read</span>
+    </div>
+    <div class="row" data-cat="gtm">
+      <span class="row__date">Mar 2026</span>
+      <span class="row__cat">Go-to-Market</span>
+      <span class="row__title">Pricing a Class II device for a value-based purchaser.</span>
+      <span class="row__author">David Chen</span>
+      <span class="row__read">9 min read</span>
+    </div>
+    <div class="row" data-cat="reg">
+      <span class="row__date">Feb 2026</span>
+      <span class="row__cat">Regulatory</span>
+      <span class="row__title">510(k) language that reads like a launch plan.</span>
+      <span class="row__author">Min-joon Park</span>
+      <span class="row__read">7 min read</span>
+    </div>
+    <div class="row" data-cat="access">
+      <span class="row__date">Jan 2026</span>
+      <span class="row__cat">Market Access</span>
+      <span class="row__title">CPT category III is a feature, not a bug. Here's why.</span>
+      <span class="row__author">Sara Whitman</span>
+      <span class="row__read">5 min read</span>
+    </div>
+    <div class="row" data-cat="kol">
+      <span class="row__date">Dec 2025</span>
+      <span class="row__cat">Physician Engagement</span>
+      <span class="row__title">Korean medical conferences your U.S. team should attend in 2026.</span>
+      <span class="row__author">Hannah Lee</span>
+      <span class="row__read">4 min read</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TEAM
+     ============================================================ -->
+<section class="team" id="team">
+  <div class="team__inner">
+    <div class="team__head">
+      <div>
+        <span class="ek">Team</span>
+        <h2 class="team__h2">Senior operators. No junior pyramids.</h2>
+      </div>
+      <p class="team__sub">
+        Every engagement is led by a partner who has shipped a U.S. commercial launch. We don't bench
+        our senior team and we don't subcontract relationships.
+      </p>
+    </div>
+    <div class="team__grid">
+      <div class="partner">
+        <div class="partner__photo">
+          <div class="partner__initials">MJ</div>
+          <div class="partner__loc">Boston</div>
+        </div>
+        <div>
+          <div class="partner__name">Min-joon Park</div>
+          <div class="partner__role">Managing Partner</div>
+          <div class="partner__bio">Former Edwards Lifesciences. 14 years U.S. cardiology commercial.</div>
+        </div>
+      </div>
+      <div class="partner">
+        <div class="partner__photo">
+          <div class="partner__initials">HL</div>
+          <div class="partner__loc">Minneapolis</div>
+        </div>
+        <div>
+          <div class="partner__name">Hannah Lee</div>
+          <div class="partner__role">Partner, KOL Strategy</div>
+          <div class="partner__bio">Cleveland Clinic; Stryker Korea. Built the U.S. proctor network for two structural-heart launches.</div>
+        </div>
+      </div>
+      <div class="partner">
+        <div class="partner__photo">
+          <div class="partner__initials">DC</div>
+          <div class="partner__loc">Boston</div>
+        </div>
+        <div>
+          <div class="partner__name">David Chen</div>
+          <div class="partner__role">Partner, Market Access</div>
+          <div class="partner__bio">Ex-Boston Scientific reimbursement. Led CPT III to I transitions for ablation and structural heart.</div>
+        </div>
+      </div>
+      <div class="partner">
+        <div class="partner__photo">
+          <div class="partner__initials">SW</div>
+          <div class="partner__loc">Seoul</div>
+        </div>
+        <div>
+          <div class="partner__name">Sara Whitman</div>
+          <div class="partner__role">Director, Commercial Build</div>
+          <div class="partner__bio">McKinsey &amp; Company medtech practice. Operating leader through Series B and C.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT CTA
+     ============================================================ -->
+<section class="cta" id="contact">
+  <div class="cta__inner">
+    <div class="cta__eb">Begin a Conversation</div>
+    <h2 class="cta__h2">
+      A 30-minute call before<br/>
+      your next board meeting.
+    </h2>
+    <p class="cta__sub">
+      Tell us where you are in the launch sequence. We'll tell you, candidly, where we can move the needle and where we can't.
+    </p>
+    <div class="cta__row">
+      <button class="btn btn--paper" data-open-contact>
+        Request a Call <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+      </button>
+      <a class="btn btn--ghost-light" href="mailto:hello@crestbridge.partners">hello@crestbridge.partners</a>
+    </div>
+  </div>
+  <svg class="cta__watermark" width="800" height="800" viewBox="0 0 120 120" aria-hidden="true">
+    <path d="M14 96 Q60 14 106 96" stroke="currentColor" stroke-width="1" fill="none"/>
+    <path d="M34 96 Q60 46 86 96" stroke="currentColor" stroke-width="1" fill="none"/>
+    <line x1="10" y1="96" x2="110" y2="96" stroke="currentColor" stroke-width="1"/>
+  </svg>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">
+          <svg width="36" height="36" viewBox="0 0 120 120" aria-hidden="true">
+            <path d="M10 80 Q60 50 110 80" stroke="currentColor" stroke-width="3" stroke-linecap="square" fill="none"/>
+            <line x1="30" y1="73" x2="30" y2="96" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+            <line x1="90" y1="73" x2="90" y2="96" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+            <line x1="10" y1="96" x2="110" y2="96" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
+            <circle cx="60" cy="63" r="3.4" fill="currentColor"/>
+          </svg>
+          <span class="footer__brand-name">CrestBridge <span style="font-style:italic; font-weight:400; color:var(--brass-400);">Partners</span></span>
+        </div>
+        <p class="footer__tag">Bridging Korean medtech innovation and U.S. commercial success.</p>
+      </div>
+      <div>
+        <div class="footer__col-title">Firm</div>
+        <span class="footer__col-item">Approach</span>
+        <span class="footer__col-item">Services</span>
+        <span class="footer__col-item">Team</span>
+        <span class="footer__col-item">Careers</span>
+      </div>
+      <div>
+        <div class="footer__col-title">Insights</div>
+        <span class="footer__col-item">Field Notes</span>
+        <span class="footer__col-item">Case Studies</span>
+        <span class="footer__col-item">White Papers</span>
+        <span class="footer__col-item">Press</span>
+      </div>
+      <div>
+        <div class="footer__col-title">Contact</div>
+        <span class="footer__col-item">hello@crestbridge.partners</span>
+        <span class="footer__col-item">+1 617 555 0144</span>
+        <span class="footer__col-item">+82 2 555 7720</span>
+        <span class="footer__col-item">LinkedIn</span>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 CrestBridge Partners, LLC.</span>
+      <div class="footer__offices">
+        <span>BOSTON</span><span>MINNEAPOLIS</span><span>SEOUL</span>
+      </div>
+      <div class="footer__legal">
+        <span>Privacy</span><span>Terms</span><span>Disclosures</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     CONTACT MODAL
+     ============================================================ -->
+<div class="scrim" id="scrim" hidden>
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal__close" aria-label="Close" data-close-contact><i data-lucide="x"></i></button>
+    <div id="modal-form">
+      <div class="modal__kicker">Request a Call</div>
+      <h3 class="modal__h3" id="modal-title">Begin a conversation.</h3>
+      <form id="contact-form">
+        <div class="modal__row">
+          <div class="field"><label>Full name</label><input type="text" name="name" placeholder="Your name" required/></div>
+          <div class="field"><label>Work email</label><input type="email" name="email" placeholder="you@company.com" required/></div>
+        </div>
+        <div class="field"><label>Company</label><input type="text" name="company" placeholder="Company name"/></div>
+        <div class="field">
+          <label>Where are you in the launch sequence?</label>
+          <select name="stage">
+            <option>Pre-510(k)</option>
+            <option>Cleared, pre-launch</option>
+            <option>Launched, scaling</option>
+            <option>Exploring U.S. entry</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>What would you like to discuss?</label>
+          <textarea name="message" placeholder="A short note helps us route to the right partner."></textarea>
+        </div>
+        <button class="btn btn--primary" type="submit" style="margin-top:28px; width:100%; justify-content:center;">
+          Send Request <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+        </button>
+      </form>
+    </div>
+    <div id="modal-sent" hidden>
+      <div class="modal__kicker">Received</div>
+      <h3 class="modal__h3">Thank you.</h3>
+      <p style="font-family:var(--font-sans); font-size:15px; color:var(--fg-2); line-height:1.55; margin:0;">
+        One of our partners will reply within one business day to schedule a 30-minute introduction.
+      </p>
+      <button class="btn btn--primary" style="margin-top:28px;" data-close-contact>Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------- Nav scroll state ----------
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ---------- Language toggle ----------
+  document.getElementById('lang').addEventListener('click', (e) => {
+    const t = e.target.closest('[data-lang]');
+    if (!t) return;
+    document.querySelectorAll('#lang [data-lang]').forEach(el => el.classList.toggle('is-on', el === t));
+  });
+
+  // ---------- Nav link active state ----------
+  document.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.nav__link').forEach(l => l.classList.remove('is-active'));
+      link.classList.add('is-active');
+    });
+  });
+
+  // ---------- Insights filter ----------
+  const chips = document.getElementById('chips');
+  chips.addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip');
+    if (!chip) return;
+    document.querySelectorAll('#chips .chip').forEach(c => c.classList.toggle('is-on', c === chip));
+    const f = chip.dataset.filter;
+    document.querySelectorAll('#insights-list .row').forEach(row => {
+      row.style.display = (f === 'all' || row.dataset.cat === f) ? '' : 'none';
+    });
+  });
+
+  // ---------- Contact modal ----------
+  const scrim = document.getElementById('scrim');
+  const formView = document.getElementById('modal-form');
+  const sentView = document.getElementById('modal-sent');
+  const openContact = () => {
+    formView.hidden = false; sentView.hidden = true;
+    scrim.hidden = false;
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => window.lucide && window.lucide.createIcons());
+  };
+  const closeContact = () => {
+    scrim.hidden = true;
+    document.body.style.overflow = '';
+    document.getElementById('contact-form').reset();
+  };
+  document.querySelectorAll('[data-open-contact]').forEach(b => b.addEventListener('click', openContact));
+  document.querySelectorAll('[data-close-contact]').forEach(b => b.addEventListener('click', closeContact));
+  scrim.addEventListener('click', (e) => { if (e.target === scrim) closeContact(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !scrim.hidden) closeContact(); });
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    formView.hidden = true;
+    sentView.hidden = false;
+    requestAnimationFrame(() => window.lucide && window.lucide.createIcons());
+  });
+
+  // ---------- Lucide icons ----------
+  window.addEventListener('DOMContentLoaded', () => window.lucide && window.lucide.createIcons());
+</script>
+</body>
+</html>

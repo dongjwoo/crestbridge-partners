@@ -1,0 +1,232 @@
+/* ============================================================
+   CrestBridge Partners — Design Tokens
+   Colors, Type, Spacing, Radii, Shadow, Motion
+   ============================================================ */
+
+/* --- Fonts (Google Fonts substitutes; flag in README) --- */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600;8..60,700&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---------- Color: Ink (navy → black) ---------- */
+  --ink-950: #06121F;
+  --ink-900: #0B1A2E;  /* primary brand dark — hero color */
+  --ink-800: #14253C;
+  --ink-700: #1F3553;
+  --ink-600: #2E456A;
+  --ink-500: #3E5780;
+
+  /* ---------- Color: Slate (cool neutrals) ---------- */
+  --slate-600: #475569;
+  --slate-500: #5A6B82;
+  --slate-400: #8392A5;
+  --slate-300: #B3BDCB;
+  --slate-200: #D6DCE4;
+  --slate-100: #E8ECF1;
+  --slate-50:  #F3F5F8;
+
+  /* ---------- Color: Paper (warm ivory neutrals) ---------- */
+  --paper:     #FAF7F2;  /* default page background */
+  --paper-2:   #F2EDE4;
+  --paper-3:   #E8E1D3;
+  --white:     #FFFFFF;
+
+  /* ---------- Color: Accents ---------- */
+  --brass-700: #8A5E2F;
+  --brass-600: #A8743D;
+  --brass-500: #B98A4E;  /* primary accent */
+  --brass-400: #C9A06D;
+  --brass-200: #E6D4B5;
+
+  --teal-700:  #1E4144;
+  --teal-600:  #234E52;  /* healthcare / data accent — sparing */
+  --teal-500:  #2A6F6B;
+
+  /* ---------- Color: Semantic ---------- */
+  --success:   #2E7A52;
+  --success-bg:#E4EFE9;
+  --warning:   #B98A4E;
+  --warning-bg:#F5EAD6;
+  --danger:    #A03E3E;
+  --danger-bg: #F4E1E1;
+  --info:      #2E5A8C;
+  --info-bg:   #E1EAF3;
+
+  /* ---------- Semantic surface / text tokens ---------- */
+  --bg:         var(--paper);
+  --bg-elev:    var(--white);
+  --bg-inverse: var(--ink-900);
+
+  --fg-1:       var(--ink-900);  /* primary text */
+  --fg-2:       var(--ink-700);  /* secondary text / body */
+  --fg-3:       var(--slate-500);/* tertiary / meta */
+  --fg-4:       var(--slate-400);/* placeholder / disabled */
+  --fg-inverse: var(--paper);
+
+  --rule:       var(--slate-200);
+  --rule-strong:var(--slate-300);
+  --rule-inverse: rgba(255,255,255,0.14);
+
+  --accent:     var(--brass-500);
+  --accent-deep:var(--brass-700);
+  --link:       var(--ink-900);
+  --link-hover-underline: var(--brass-500);
+
+  /* ---------- Typography ---------- */
+  --font-serif: 'Source Serif 4', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+  --font-sans:  'Geist', 'Söhne', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono:  'Geist Mono', 'JetBrains Mono', 'SFMono-Regular', Consolas, Menlo, monospace;
+
+  /* Display scale (serif) */
+  --fs-display-1: 84px;  --lh-display-1: 0.98; --tr-display-1: -0.025em;
+  --fs-display-2: 64px;  --lh-display-2: 1.02; --tr-display-2: -0.022em;
+  --fs-h1:        48px;  --lh-h1: 1.08;        --tr-h1: -0.02em;
+  --fs-h2:        36px;  --lh-h2: 1.15;        --tr-h2: -0.015em;
+  --fs-h3:        24px;  --lh-h3: 1.25;        --tr-h3: -0.01em;
+
+  /* UI scale (sans) */
+  --fs-h4:        20px;  --lh-h4: 1.35;        --tr-h4: -0.005em;
+  --fs-h5:        17px;  --lh-h5: 1.4;
+  --fs-body:      17px;  --lh-body: 1.6;       --tr-body: -0.003em;
+  --fs-body-sm:   15px;  --lh-body-sm: 1.55;
+  --fs-meta:      13px;  --lh-meta: 1.5;
+  --fs-eyebrow:   12px;  --lh-eyebrow: 1.4;    --tr-eyebrow: 0.12em;
+  --fs-mono:      14px;  --lh-mono: 1.55;
+
+  /* ---------- Spacing (4-px base) ---------- */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  24px;
+  --s-6:  32px;
+  --s-7:  48px;
+  --s-8:  64px;
+  --s-9:  96px;
+  --s-10: 128px;
+  --s-11: 160px;
+
+  /* ---------- Radii ---------- */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-pill: 999px;
+
+  /* ---------- Shadow ---------- */
+  --shadow-sm: 0 1px 2px rgba(11,26,46,0.04);
+  --shadow-md: 0 4px 12px rgba(11,26,46,0.06), 0 2px 4px rgba(11,26,46,0.04);
+  --shadow-lg: 0 12px 32px rgba(11,26,46,0.10), 0 4px 8px rgba(11,26,46,0.05);
+  --shadow-focus: 0 0 0 3px rgba(185,138,78,0.32);
+
+  /* ---------- Motion ---------- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+
+  /* ---------- Layout ---------- */
+  --content-max: 1280px;
+  --content-gutter: 96px;
+  --measure: 720px;
+  --nav-h: 64px;
+}
+
+/* ============================================================
+   Element defaults
+   ============================================================ */
+
+html, body {
+  background: var(--bg);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--tr-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--fg-1);
+  margin: 0;
+}
+h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--fg-1);
+  margin: 0;
+}
+
+h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); letter-spacing: var(--tr-h1); }
+h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); letter-spacing: var(--tr-h2); }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-h3); letter-spacing: var(--tr-h3); }
+h4 { font-size: var(--fs-h4); line-height: var(--lh-h4); letter-spacing: var(--tr-h4); }
+h5 { font-size: var(--fs-h5); line-height: var(--lh-h5); }
+
+p  { margin: 0 0 1em 0; color: var(--fg-2); max-width: var(--measure); }
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-base) var(--ease);
+}
+a:hover { border-bottom-color: var(--link-hover-underline); }
+
+small, .meta { font-size: var(--fs-meta); color: var(--fg-3); }
+
+code, pre, kbd {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  line-height: var(--lh-mono);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--s-7) 0;
+}
+
+/* ============================================================
+   Utility classes
+   ============================================================ */
+
+.display-1 { font-family: var(--font-serif); font-weight: 400;
+  font-size: var(--fs-display-1); line-height: var(--lh-display-1); letter-spacing: var(--tr-display-1); }
+.display-2 { font-family: var(--font-serif); font-weight: 400;
+  font-size: var(--fs-display-2); line-height: var(--lh-display-2); letter-spacing: var(--tr-display-2); }
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  line-height: var(--lh-eyebrow);
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.lead {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: 1.45;
+  font-weight: 300;
+  color: var(--fg-2);
+  max-width: var(--measure);
+}
+
+.rule { border-top: 1px solid var(--rule); }
+.rule-strong { border-top: 1px solid var(--rule-strong); }
+
+.surface-ink {
+  background: var(--bg-inverse);
+  color: var(--fg-inverse);
+}
+.surface-ink h1, .surface-ink h2, .surface-ink h3,
+.surface-ink h4, .surface-ink h5, .surface-ink h6 { color: var(--fg-inverse); }
+.surface-ink p { color: rgba(250,247,242,0.78); }
+.surface-ink .eyebrow { color: var(--brass-400); }
+.surface-ink hr,
+.surface-ink .rule { border-top-color: var(--rule-inverse); }
